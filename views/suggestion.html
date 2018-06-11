@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="container">
+    <h1><i class="far fa-comment float-left mr-3" style="color: #03A9F4;"></i> {{ post.title }}</h1>
+    <p>Add comments to support this suggestion, or provide detail to make this case.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="container">
+    <form ng-submit="addComment()" style="margin-top: 30px;">
+      <h3>Submit Your Comment</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Write a comment about this submission" ng-model="comment"></input>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Comment</button>
+      <a href="#/"><button class="btn btn-secondary">Back</button></a>
+    </form>
+  </div>
+
+  <div class=container>
+    <div class="card comment" ng-repeat="comment in post.comments | orderBy : '-upvotes'">
+      <h4 class="comment title">{{ comment.body }}</p>
+      <p class="upvotes">
+        <i class="fas fa-plus-circle" style="color: #096;" ng-click="upVote(comment)"></i> Upvotes: {{ comment.upvotes }}
+      </p>
+    </div>
+  </div>
+
+</div>
